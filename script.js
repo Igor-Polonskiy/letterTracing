@@ -1,4 +1,6 @@
 (() => {
+    let reload = document.querySelector('.task1_reloadTask')
+    let audio = document.querySelector('.task1_audio')
     let c = document.querySelector('canvas');
     let cx = c.getContext('2d');
     let mousedown = false;
@@ -13,9 +15,11 @@
     let b = 0
     let drowColor = `rgb(${r}, ${g}, ${b})`
 
+
+
     function setupCanvas() {
         c.height = 480;
-        c.width = 600;
+        c.width = 500;
         cx.lineCap = 'round';
         // cx.strokeStyle = 'rgb(0, 0, 100)';
         cx.font = 'bold 310px Arial';
@@ -105,7 +109,7 @@
 
     function pixelthreshold() {
 
-        if (getpixelamount(r, g, b) / letterpixels > 0.85) {
+        if (getpixelamount(r, g, b) / letterpixels > 0.75) {
             if (!isLetterComplete) {
                 pulse()
             }
@@ -114,6 +118,8 @@
 
     function pulse() {
         let size = 310
+
+        audio.play()
 
         let timerId1 = setInterval(() => {
             size += 2
@@ -154,12 +160,19 @@
     };
 
     function onmousemove(ev) {
-        let x = ev.clientX;
-        let y = ev.clientY;
+        let x = ev.clientX - ev.target.offsetLeft;
+        let y = ev.clientY - ev.target.offsetTop;
         if (mousedown) {
             paint(x, y);
         }
     };
+
+    function reloadTask() {
+        isLetterComplete = false
+        setupCanvas();
+    }
+
+    reload.addEventListener('click', reloadTask)
 
     c.addEventListener('mousedown', onmousedown, false);
     c.addEventListener('mouseup', onmouseup, false);
