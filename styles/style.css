@@ -16,16 +16,8 @@ body {
     justify-content: center;
 }
 
-.letter_img img {
-    /* max-width: 220px;*/
-}
-
-.a {
+.letter_img>img {
     max-width: 220px;
-}
-
-.B {
-    max-width: 120px;
 }
 
 .letter_canvas {
