@@ -16,7 +16,10 @@
         /**/
     let isLetterComplete = false
         /*заменть цвет закраски буквы на нужный в формате rgb*/
-        /*использовать любой кроме (255,255,255)-цвет буквы и (240, 100, 0)-цвет обводки*/
+        /*использовать любой кроме 
+        (255,255,255)-цвет буквы и
+        (240, 100, 0)-цвет обводки
+        (значение 255 нельзя применять ни к одому из трех каналов цвета)*/
     let r = 220
     let g = 0
     let b = 0
@@ -42,7 +45,7 @@
         let centerx = (c.width - cx.measureText(letter).width) / 2;
         let centery = c.height / 2;
         cx.fillStyle = color;
-
+        console
 
         cx.fillText(letter, centerx, centery);
         drawletterBorder(letter)
@@ -64,10 +67,9 @@
 
     function paint(x, y) {
         let colour = getpixelcolour(x, y);
-        //  console.log(colour.r, colour.g, colour.b)
+
         if (colour.r !== 255 || colour.g !== 255 || colour.b !== 255) {
-            // showerror('you are outside');
-            /*чтобы линия не рисовалась вне буквы*/
+
             mousedown = false;
         } else {
             cx.strokeStyle = drowColor;
@@ -165,7 +167,6 @@
             var area = ev.width * ev.height;
             let x = Math.round(ev.clientX - c.getBoundingClientRect().x);
             let y = Math.round(ev.clientY - c.getBoundingClientRect().y);
-            console.log(x, y, ev.width, ev.height, ev.clientX, ev.clientY)
             paint(x, y);
         }
     };
