@@ -5,28 +5,47 @@
     <meta name="viewport" content="width=device-width">
     <meta charset="UTF-8">
     <title>Compare pixels</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <div class="task1_wrapper task_wrapper">
-        <div class="task1_img">
-            <canvas></canvas>
-            <img src="apple.png">
+    <!--меняем все вхождения letter_A... на нужную букву-->
+    <div class="letter_A_wrapper letter_wrapper">
+        <div class="letter_img">
+            <canvas class="letter_canvas letter_A_canvas"></canvas>
+            <!--вставляем нужную картинку-->
+            <img class="a" src="Images_1/apple.png">
         </div>
 
-        <div class="task1_checkTask">
-            <button class="task1_reloadTask task1Btn">сброс &#8635; </button>
+        <div class="letter_checkTask">
+            <button class="letter_A_reloadTask task1Btn">сброс &#8635; </button>
+        </div>
+        <!--вставляем нужный аудиофайл-->
+        <audio class="letter_audio letter_A_audio" src="sound/A.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+        </audio>
+    </div>
+
+    <div class="letter_B_wrapper letter_wrapper">
+        <div class="letter_img">
+            <canvas class="letter_canvas letter_B_canvas" id=""></canvas>
+            <img class="B" src="Images_1/Alphabet_B.png">
         </div>
 
-        <audio class="task1_audio" id="task1_1" src="A.mp3">
+        <div class="letter_checkTask">
+            <button class="letter_B_reloadTask task1Btn">сброс &#8635; </button>
+        </div>
+
+        <audio class="letter_Budio letter_B_audio" src="sound/B.mp3">
             Your browser does not support the
             <code>audio</code> element.
         </audio>
     </div>
 
 
-    <script src="script.js"></script>
+    <script src="js-data/script.js"></script>
+    <script src="js-data/script1.js"></script>
 </body>
 
 </html>
