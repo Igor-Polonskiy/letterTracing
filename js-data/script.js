@@ -16,6 +16,7 @@
         /**/
     let isLetterComplete = false
         /*заменть цвет закраски буквы на нужный в формате rgb*/
+        /*использовать любой кроме (255,255,255)-цвет буквы и (240, 100, 0)-цвет обводки*/
     let r = 220
     let g = 0
     let b = 0
@@ -32,7 +33,7 @@
         cx.fillStyle = 'rgb(255, 255, 255)';
         cx.textBaseline = 'middle';
 
-        drawletter(letter, 'white');
+        drawletter(letter, 'rgb(255, 255, 255)');
         pixels = cx.getImageData(0, 0, c.width, c.height);
         letterpixels = getpixelamount(255, 255, 255);
     }
@@ -41,7 +42,7 @@
         let centerx = (c.width - cx.measureText(letter).width) / 2;
         let centery = c.height / 2;
         cx.fillStyle = color;
-        cx.strokeStyle = 'rgb(240, 0, 0)';
+
 
         cx.fillText(letter, centerx, centery);
         drawletterBorder(letter)
@@ -63,7 +64,8 @@
 
     function paint(x, y) {
         let colour = getpixelcolour(x, y);
-        if /*( colour.a === 0 ||*/ (colour.r !== 255 && colour.g !== 255 && colour.b !== 255) {
+        //  console.log(colour.r, colour.g, colour.b)
+        if (colour.r !== 255 || colour.g !== 255 || colour.b !== 255) {
             // showerror('you are outside');
             /*чтобы линия не рисовалась вне буквы*/
             mousedown = false;
@@ -135,7 +137,7 @@
                 cx.clearRect(0, 0, c.width, c.height)
                 cx.font = `bold ${size}px Arial`;
                 drawletter(letter, drowColor)
-                console.log(size)
+
             }, 40);
             setTimeout(() => {
                 clearInterval(timerId2);
@@ -160,13 +162,10 @@
 
     function onmousemove(ev) {
         if (mousedown) {
-            let x = ev.clientX - c.getBoundingClientRect().x;
-            let y = ev.clientY - c.getBoundingClientRect().y;
-            console.log(ev.clientX, ev.clientY)
-            console.log(c.getBoundingClientRect().y)
-            console.log(x, y)
-
-
+            var area = ev.width * ev.height;
+            let x = Math.round(ev.clientX - c.getBoundingClientRect().x);
+            let y = Math.round(ev.clientY - c.getBoundingClientRect().y);
+            console.log(x, y, ev.width, ev.height, ev.clientX, ev.clientY)
             paint(x, y);
         }
     };
@@ -178,9 +177,9 @@
 
     reload.addEventListener('click', reloadTask)
 
-    c.addEventListener('mousedown', onmousedown, false);
-    c.addEventListener('mouseup', onmouseup, false);
-    c.addEventListener('mousemove', onmousemove, false);
+    c.addEventListener('pointerdown', onmousedown, false);
+    c.addEventListener('pointerup', onmouseup, false);
+    c.addEventListener('pointermove', onmousemove, false);
 
     setupCanvas();
 })()

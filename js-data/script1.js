@@ -63,7 +63,7 @@
 
     function paint(x, y) {
         let colour = getpixelcolour(x, y);
-        if ( /*colour.a === 0 ||*/ (colour.r !== 255 && colour.g !== 255 && colour.b !== 255)) {
+        if (colour.r !== 255 || colour.g !== 255 || colour.b !== 255) {
             // showerror('you are outside');
             /*чтобы линия не рисовалась вне буквы*/
             mousedown = false;
@@ -135,7 +135,6 @@
                 cx.clearRect(0, 0, c.width, c.height)
                 cx.font = `bold ${size}px Arial`;
                 drawletter(letter, drowColor)
-                console.log(size)
             }, 40);
             setTimeout(() => {
                 clearInterval(timerId2);
@@ -160,8 +159,8 @@
 
     function onmousemove(ev) {
         if (mousedown) {
-            let x = ev.clientX - c.getBoundingClientRect().x;
-            let y = ev.clientY - c.getBoundingClientRect().y;
+            let x = Math.round(ev.clientX - c.getBoundingClientRect().x);
+            let y = Math.round(ev.clientY - c.getBoundingClientRect().y);
 
             paint(x, y);
         }
@@ -174,9 +173,9 @@
 
     reload.addEventListener('click', reloadTask)
 
-    c.addEventListener('mousedown', onmousedown, false);
-    c.addEventListener('mouseup', onmouseup, false);
-    c.addEventListener('mousemove', onmousemove, false);
+    c.addEventListener('pointerdown', onmousedown, false);
+    c.addEventListener('pointerup', onmouseup, false);
+    c.addEventListener('pointermove', onmousemove, false);
 
     setupCanvas();
 })()

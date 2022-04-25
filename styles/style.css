@@ -32,6 +32,7 @@ body {
     display: block;
     background: rgb(253, 253, 253);
     cursor: pointer;
+    touch-action: none;
 }
 
 .letter_checkTask {
