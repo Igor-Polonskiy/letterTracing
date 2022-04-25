@@ -1,0 +1,67 @@
+body {
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.letter_wrapper {
+    margin: 20px;
+    border: 1px solid grey;
+    padding: 10px
+}
+
+.letter_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter_img img {
+    /* max-width: 220px;*/
+}
+
+.a {
+    max-width: 220px;
+}
+
+.B {
+    max-width: 120px;
+}
+
+.letter_canvas {
+    display: block;
+    background: rgb(253, 253, 253);
+    cursor: pointer;
+}
+
+.letter_checkTask {
+    display: flex;
+    justify-content: center;
+}
+
+.letter_chek_answer {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+}
+
+.letter_chek_answer span {
+    font-size: 25px;
+}
+
+.task1Btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #e9ecf4;
+    border: none;
+    border-radius: 12px;
+    background-color: #0AB7D3;
+    padding: 10px;
+    font-size: 26px;
+    color: white;
+    min-width: 100px;
+}
+
+.task1Btn:hover {
+    box-shadow: -5px -5px 15px #b8b7b7, 5px 5px 15px #99999b;
+}
