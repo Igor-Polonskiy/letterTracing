@@ -26,9 +26,9 @@
 
     function setupCanvas() {
         c.height = 400;
-        c.width = 400;
+        c.width = 500;
         cx.lineCap = 'round';
-        cx.font = `bold 250px ${font}`;
+        cx.font = `bold 310px ${font}`;
         cx.fillStyle = 'rgb(255, 255, 255)';
         cx.textBaseline = 'middle';
 
@@ -50,7 +50,7 @@
     function drawletterBorder(letter) {
         let centerx = (c.width - cx.measureText(letter).width) / 2;
         let centery = c.height / 2;
-        cx.lineWidth = 10;
+        cx.lineWidth = 15;
         cx.lineCap = 'round'
         cx.strokeStyle = 'rgb(240, 100, 0)';
         cx.strokeText(letter, centerx, centery);
@@ -70,7 +70,7 @@
         } else {
             cx.strokeStyle = drowColor;
 
-            cx.lineWidth = 22;
+            cx.lineWidth = 28;
             cx.lineTo(x, y);
             cx.stroke();
             cx.beginPath();
@@ -117,7 +117,7 @@
     };
 
     function pulse() {
-        let size = 250
+        let size = 310
 
         audio.play()
 
